@@ -3,15 +3,15 @@
  
 (ejemplo práctico de cómo generar un registro en laravel para que el usuario registre toda la interacción con el sistema con monolog)
 
- 1. install monolog: This package will allow you to create the records of each interaction with the user
+## 1. install monolog: This package will allow you to create the records of each interaction with the user
  
     $ composer require monolog/monolog
  
-2. create monolog middleware: will allow us to instantiate the log in any system controller
+## 2. create monolog middleware: will allow us to instantiate the log in any system controller
  
     php artisan make:middleware MonologMiddleware
     
-3. Enter the MonologMiddleware code (MonologMiddleware.php)
+## 3. Enter the MonologMiddleware code (MonologMiddleware.php)
 
 ```php
 
@@ -113,7 +113,7 @@ class MonologMiddleware
 }
 ```
 
-4. then instantiate the constructor in any controller of the application
+## 4. then instantiate the constructor in any controller of the application
 ```php
 
     public function __construct()
@@ -122,10 +122,13 @@ class MonologMiddleware
     }
     
 ```
-Example: the registry lets you know what controller is instantiating, the method used, a description of the user id and the name of the same, the visitor's IP, the operating system and the mac address.
+### Example: the registry lets you know what controller is instantiating, the method used, a description of the user id and the name of the same, the visitor's IP, the operating system and the mac address.
  
 ```txt
  [2020-06-15T01:02:10.181037-05:00] user.ALERT: Nuevo Registro de la Bitacora con las siguiente especificaciones.:  {"user_id":2,"operation":"user_settings","from":"user","description":"el usuario Nº 2 de nombre Isabel Sánchez realizo esta acción","os":"Windows NT PERFILES 10.0 build 18362 (Windows 10) AMD64","visitor":"127.0.0.1","device":"60-33-26-90-5e-39"} []
 ```
+
+
+## Recommendation: to take advantage of this registry when it comes to obtaining statistics of which module the user visits the most and applying it to graphics for decision-making can create a migration where they save all the information to generate very interesting queries and present it in a management module.
  
  
