@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class UserController extends Controller{
+
+    public function __construct()
+    {
+        $this->middleware('MonologMiddleware');
+    }
+   
+  
+}
